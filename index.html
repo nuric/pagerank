@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Social Network PageRank Demo</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <div id="content" style="float:left;">
+        <h1>Interactive PageRank Demo</h1>
+        <p>Use the interactive graph to create nodes and analyze the pagerank.</p>
+        <p>The first slider is the damping value and the second corresponds to the precision.</p>
+        <p>Thanks to:</p>
+        <ul>
+            <li><a href="http://bl.ocks.org/rkirsling/5001347">Graph Script</a>
+            </li>
+            <li><a href="http://williamcotton.com/pagerank-explained-with-javascript">PageRank Implementation</a>
+            </li>
+            <li><a href="http://sylvester.jcoglan.com">Matrix & Vector Library</a>
+            </li>
+        </ul>
+        <button type="button" onclick="displayR()">Recalculate</button>
+        <input id="damping_value" type="range" min="0" max="1" value="0.85" step="0.025" onchange="showValue('dampValue', this.value)" />
+        <span id="dampValue">0.85</span>
+        <input id="precision_value" type="range" min="1" max="8" value="3" step="1" onchange="showValue('precisionValue', this.value)" />
+        <span id="precisionValue">3</span>
+
+        <script type="text/javascript">
+            function showValue(spanID, newValue) {
+                document.getElementById(spanID).innerHTML = newValue;
+            }
+        </script>
+
+        <hr>
+
+        <table id="pagerankTable" border="1" summary="PageRank of Nodes"></table>
+
+    </div>
+    <div id="graphDiv" style="float:left;"></div>
+
+    <script type="text/javascript" src="sylvester.src.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="pagerank.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
